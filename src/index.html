@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LoanX - P2P Lending Platform</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style1.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="fonts/icomoon/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="fonts/icomoon/style.css" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css" />
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
+
+    <link rel="stylesheet" href="css/aos.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="site-wrap">
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+      <header
+        class="site-navbar py-4 js-sticky-header site-navbar-target"
+        role="banner"
+      >
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-6 col-xl-2">
+              <h1 class="mb-0 site-logo">
+                <a href="index.html" class="h2 mb-0"
+                  >LoanX<span class="text-primary">.</span>
+                </a>
+              </h1>
+            </div>
+
+            <div class="col-12 col-md-10 d-none d-xl-block">
+              <nav
+                class="site-navigation position-relative text-right"
+                role="navigation"
+              >
+                <ul
+                  class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block"
+                >
+                  <li><a href="#home-section" class="nav-link">Home</a></li>
+                  <li>
+                    <a href="#register-section" class="nav-link">Register</a>
+                  </li>
+                  <li>
+                    <a href="#team-section" class="nav-link">Team</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <div
+              class="col-6 d-inline-block d-xl-none ml-md-0 py-3"
+              style="position: relative; top: 3px;"
+            >
+              <a href="#" class="site-menu-toggle js-menu-toggle float-right"
+                ><span class="icon-menu h3"></span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div
+        class="site-blocks-cover overlay"
+        style="background-image: url(images/main-map.jpg);"
+        data-aos="fade"
+        id="home-section"
+      >
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-8 mt-lg-5">
+              <h1 class="text-uppercase" data-aos="fade-up">
+                The first p2p lending platform
+              </h1>
+              <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">
+                What makes us unique?
+              </p>
+              <div data-aos="fade-up" data-aos-delay="100">
+                <a
+                  href="#"
+                  class="btn smoothscroll btn-primary mr-2 mb-2"
+                  data-toggle="modal"
+                  data-target="#loginbox"
+                  >Login</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#register-section" class="mouse smoothscroll">
+          <span class="mouse-icon">
+            <span class="mouse-wheel"></span>
+          </span>
+        </a>
+      </div>
+
+      <div class="modal fadeInDown" id="loginbox">
+        <div class="modal-dialog">
+          <div class="modal-content" style="width: 70%;">
+            <div class="modal-header divHeading">
+              <h4 class="fadeIn first loginHeading text-uppercase">
+                Login
+                <span class="text-danger" style="font-size: 0.6rem;"
+                  >POWERED BY METAMASK</span
+                >
+              </h4>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="sel1" class="fadeIn second loginText"
+                  >Select your Category:</label
+                >
+                <select class="fadeIn third form-control" id="selCategory">
+                  <option value="Borrower">Borrower</option>
+                  <option value="Lender">Lender</option>
+                </select>
+              </div>
+              <p class="fadeIn fourth loginNote">
+                <b>
+                  Note: Make sure your metamask wallet is connected to our
+                  website before trying to login</b
+                >
+              </p>
+              <div class="fadeIn fourth text-center">
+                <input
+                  type="submit"
+                  id="loginUser"
+                  class="btnlogin btn btn-primary"
+                  value="Login"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="site-section cta-big-image"
+        style="background-image: url(images/untitled.jpg);"
+        id="register-section"
+      >
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2
+              class="section-title mb-3 text-white"
+              data-aos="fade-up"
+              data-aos-delay=""
+            >
+              Register Below
+            </h2>
+          </div>
+        </div>
+
+        <div class="container register" data-aos="fade-up" data-aos-delay="">
+          <div class="row">
+            <div class="col-md-3 register-left">
+              <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+              <h3>Welcome</h3>
+              <p>To first P2P lending platform powered by Blockchain.</p>
+              <input
+                type="submit"
+                name=""
+                value="Login"
+                data-toggle="modal"
+                data-target="#loginbox"
+              /><br />
+            </div>
+
+            <div class="col-md-9 register-right">
+              <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="#home"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                    >Borrower</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                    >Lender</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <h3 class="register-heading">Apply as a Borrower</h3>
+                  <div class="row register-form">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bName"
+                          placeholder="Name"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateBName"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bAge"
+                          placeholder="Age"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateBAge"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bAadhar"
+                          placeholder="Aadhar Number"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateBAadhar"></p>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bAddress"
+                          placeholder="Residential Address"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateBAddress"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="bPhone"
+                          class="form-control"
+                          placeholder="Mobile Number"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateBPhone"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="bCollege"
+                          class="form-control"
+                          placeholder="College Name"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateBCollege"></p>
+                      <input
+                        type="button"
+                        class="btnRegister"
+                        id="registerBorrower"
+                        value="Register"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade show"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <h3 class="register-heading">Apply as a Lender</h3>
+                  <div class="row register-form">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="lName"
+                          class="form-control"
+                          placeholder="Name"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateLName"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="lAge"
+                          class="form-control"
+                          placeholder="Age"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateLAge"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="lAadhar"
+                          class="form-control"
+                          placeholder="Aadhar Number"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateLAadhar"></p>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="lAddress"
+                          class="form-control"
+                          placeholder="Residential Address"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateLAddress"></p>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="lPhone"
+                          class="form-control"
+                          placeholder="Mobile Number"
+                          value=""
+                        />
+                      </div>
+                      <p style="color: red;" id="validateLPhone"></p>
+                      <div class="form-group">
+                        <a
+                          href="#"
+                          data-toggle="tooltip"
+                          title="Dynamic lending rate feature will be available soon"
+                        >
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Lending Rate: 5%"
+                            value=""
+                            readonly
+                          />
+                        </a>
+                      </div>
+                      <input
+                        type="submit"
+                        id="registerLender"
+                        class="btnRegister"
+                        value="Register"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="site-section border-bottom" id="team-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-8 text-center">
+              <h2
+                class="section-title mb-3"
+                data-aos="fade-up"
+                data-aos-delay=""
+              >
+                Our Team
+              </h2>
+              <p class="lead" data-aos="fade-up" data-aos-delay="100"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-6 col-lg-4 mb-4"
+              data-aos="fade-up"
+              data-aos-delay=""
+            >
+              <div class="team-member">
+                <figure>
+                  <ul class="social">
+                    <li>
+                      <a href="#"><span class="icon-facebook"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-twitter"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-linkedin"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-instagram"></span></a>
+                    </li>
+                  </ul>
+                  <img src="images/shubham.jpg" alt="Image" class="img-fluid" />
+                </figure>
+                <div class="p-3">
+                  <h3>Shubham Gupta</h3>
+                  <span class="position">Backend Developer</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-md-6 col-lg-4 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="team-member">
+                <figure>
+                  <ul class="social">
+                    <li>
+                      <a href="#"><span class="icon-facebook"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-twitter"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-linkedin"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-instagram"></span></a>
+                    </li>
+                  </ul>
+                  <img
+                    src="images/person_6.jpg"
+                    alt="Image"
+                    class="img-fluid"
+                  />
+                </figure>
+                <div class="p-3">
+                  <h3>Dave Simpson</h3>
+                  <span class="position">Product Manager</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-md-6 col-lg-4 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="team-member">
+                <figure>
+                  <ul class="social">
+                    <li>
+                      <a href="#"><span class="icon-facebook"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-twitter"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-linkedin"></span></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="icon-instagram"></span></a>
+                    </li>
+                  </ul>
+                  <img
+                    src="images/person_7.jpg"
+                    alt="Image"
+                    class="img-fluid"
+                  />
+                </figure>
+                <div class="p-3">
+                  <h3>Ben Thompson</h3>
+                  <span class="position">Product Manager</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-5">
+                  <h2 class="footer-heading mb-4">About Us</h2>
+                  <p></p>
+                </div>
+                <div class="col-md-3 ml-auto">
+                  <h2 class="footer-heading mb-4">Quick Links</h2>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a href="#about-section" class="smoothscroll">About Us</a>
+                    </li>
+                    <li>
+                      <a href="#services-section" class="smoothscroll"
+                        >Services</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#testimonials-section" class="smoothscroll"
+                        >Testimonials</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#contact-section" class="smoothscroll"
+                        >Contact Us</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <h2 class="footer-heading mb-4">Follow Us</h2>
+                  <a href="#" class="pl-0 pr-3"
+                    ><span class="icon-facebook"></span
+                  ></a>
+                  <a href="#" class="pl-3 pr-3"
+                    ><span class="icon-twitter"></span
+                  ></a>
+                  <a href="#" class="pl-3 pr-3"
+                    ><span class="icon-instagram"></span
+                  ></a>
+                  <a href="#" class="pl-3 pr-3"
+                    ><span class="icon-linkedin"></span
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
+              <form action="#" method="post" class="footer-subscribe">
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control border-secondary text-white bg-transparent"
+                    placeholder="Enter Email"
+                    aria-label="Enter Email"
+                    aria-describedby="button-addon2"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-primary text-black"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <div class="border-top pt-5">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved | This template is made with
+                  <i class="icon-heart text-danger" aria-hidden="true"></i> by
+                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- .site-wrap -->
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script type="text/JavaScript" src="js/truffle-contract.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
