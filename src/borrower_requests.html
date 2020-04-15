@@ -187,13 +187,13 @@
           const amount = btn.value;
           const senderAddress = web3.eth.accounts;
           const web3Provider = init();
-          const _amount = amount/etherToInr();
+          const _amount = amount/16000;
 
           console.log(receiverAddress);
           console.log(senderAddress[0]);
           console.log(amount);
 
-         /* var exec = web3.eth.sendTransaction({to:receiverAddress, from:senderAddress[0], value:web3.toWei(_amount, "ether")}, function (err, res) {
+          var exec = web3.eth.sendTransaction({to:receiverAddress, from:senderAddress[0], value:web3.toWei(_amount, "ether")}, function (err, res) {
             if(err) {
               console.log(err);
             }
@@ -203,7 +203,7 @@
               setStatusLender(receiverAddress, amount, date, web3Provider);
               setStatusBorrower(date, receiverAddress, web3Provider);
             }
-          }); */
+          });
       }
 
       function setStatusLender (receiver, amount, date, web3Provider) {
