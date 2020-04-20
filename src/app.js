@@ -9,6 +9,7 @@ import checkLoanRequest from "./js_modules/checkLoanRequest.js";
 import requestLoan from "./js_modules/requestLoan.js";
 import load_request_data from "./js_modules/load_request_data.js";
 import fetchActiveRequest from "./js_modules/fetchActiveRequest.js";
+import loadBorrowerProfile from "./js_modules/loadBorrowerProfile.js";
 
 const web3Provider = init();
 var account = web3.eth.accounts;
@@ -27,6 +28,14 @@ if (currentPage == "/lender_homepage.html") {
 
 if (currentPage == "/borrower_requests.html") {
   load_request_data(web3Provider);
+}
+
+if (currentPage == "/borrower_profile.html") {
+  loadBorrowerProfile(web3Provider);
+}
+
+if (currentPage == "/lender_profile.html") {
+  loadLenderProfile(web3Provider);
 }
 
 $("#registerBorrower").on("click", function () {
