@@ -21,10 +21,12 @@ const registerBorrower = (borrowerFormInputs, web3Provider) => {
       })
       .then(function (result) {
         alert("Registered Successfully!");
+        $("#registerBorrower").html(`Register`);
         window.location.href = "index.html";
       })
       .catch(function (err) {
         alert("Registration failed!");
+        $("#registerBorrower").html(`Register`);
         window.location.href = "index.html";
       });
   });

@@ -10,10 +10,10 @@ import requestLoan from "./js_modules/requestLoan.js";
 import load_request_data from "./js_modules/load_request_data.js";
 import fetchActiveRequest from "./js_modules/fetchActiveRequest.js";
 import loadBorrowerProfile from "./js_modules/loadBorrowerProfile.js";
+import loadLenderProfile from "./js_modules/loadLenderProfile.js";
 
 const web3Provider = init();
-var account = web3.eth.accounts;
-var amount;
+const account = web3.eth.accounts;
 
 const currentPage = window.location.pathname;
 if (currentPage == "/borrower_homepage.html") {
@@ -48,11 +48,15 @@ $("#registerBorrower").on("click", function () {
     bCollege: $("#bCollege").val(),
   };
 
-  //const isValid = validateBorrowerFormInputs(borrowerFormInputs);
+  const isValid = validateBorrowerFormInputs(borrowerFormInputs);
 
-  //if (isValid) {
-  registerBorrower(borrowerFormInputs, web3Provider);
-  //}
+  if (isValid) {
+    $("#registerBorrower").html(
+      `<i class="fa fa-spinner fa-spin"></i>Registering`
+    );
+
+    registerBorrower(borrowerFormInputs, web3Provider);
+  }
 });
 
 $("#registerLender").on("click", function () {
@@ -67,19 +71,24 @@ $("#registerLender").on("click", function () {
   const isValid = validateLenderFormInputs(lenderFormInputs);
 
   if (isValid) {
+    $("#registerLender").html(
+      `<i class="fa fa-spinner fa-spin"></i>Registering`
+    );
     registerLender(lenderFormInputs, web3Provider);
   }
 });
 
 $("#loginUser").on("click", function () {
+  $("#loginUser").html(`<i class="fa fa-spinner fa-spin"></i>Verifying`);
   let user = $("#selCategory").val();
   console.log(user);
   login(user, web3Provider);
 });
 
+let amount;
 $("#requestLoan").on("click", function () {
   $("#requestLoan").html(`<i class="fa fa-spinner fa-spin"></i>Requesting`);
-  var amountLimit = $("#bLimit").val();
+  let amountLimit = $("#bLimit").val();
   amount = $("#bAmount").val();
   const valid = checkLoanRequest(amount, amountLimit);
 

@@ -15,10 +15,12 @@ const registerLender = (lenderFormInputs, web3Provider) => {
       })
       .then(function (result) {
         alert("Registered Successfully!");
+        $("#registerLender").html(`Register`);
         window.location.href = "index.html";
       })
       .catch(function (err) {
         alert("Registration Failed!");
+        $("#registerLender").html(`Register`);
         window.location.href = "index.html";
       });
   });

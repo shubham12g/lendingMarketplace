@@ -29,7 +29,7 @@ contract Lender {
     event LenderRegistered(string _name, uint _age, string _address, string _mobile, string _aadhar, address sender);
 
 
-    mapping (address => Lender_Info) lenders;
+    mapping (address => Lender_Info) public lenders;
     mapping (address => bool) lender_accounts; 
     mapping (address => Borrower_Info) borrowers;
 
@@ -54,11 +54,11 @@ contract Lender {
     }
 
     //This function returns the stored information through address
-    function Get_Lender () view public returns (string memory, uint, string memory, string memory, string memory) {
+    function Get_Borrower_Info () view public returns (address[50] memory receiver, uint[50] memory amount, string[50] memory date_of_lending) {
         address uaddress = msg.sender;
-        Lender_Info memory lender = lenders[uaddress];
+        Borrower_Info memory borrower = borrowers[uaddress];
 
-        return (lender.name, lender.age, lender.residential_address, lender.mobile_no, lender.aadhar_no);
+        return (borrower.receiver, borrower.amount, borrower.date_of_lending);
     }
 
     
