@@ -12,6 +12,10 @@ var load_request_data = (web3Provider) => {
         return instance.borrowers_count();
       })
       .then(function (res) {
+        if (parseInt(res) == 0) {
+          alert("There are no active requests!");
+        }
+
         for (var i = 0; i < res; ++i) {
           borrowerInstance
             .mapBorrowers(i)
@@ -30,7 +34,7 @@ var load_request_data = (web3Provider) => {
 
                 if (loanStatus == 2) status = "Granted";
 
-                var data = `
+                let data = `
                     <tr>
                       <td class="text-center">${sno}</td>
                       <td class="text-center">${name}</td>
@@ -45,6 +49,11 @@ var load_request_data = (web3Provider) => {
                     </tr>
                   `;
                 $("#requestData").append(data);
+
+                let btnId = "#" + address;
+                if (loanStatus == 2) {
+                  $(btnId).attr("disabled", true);
+                }
                 ++sno;
               }
             });
