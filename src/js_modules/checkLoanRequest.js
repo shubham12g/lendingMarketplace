@@ -1,6 +1,6 @@
-var check = (amount, amountLimit) => {
-  var amountLimitValue = amountLimit.match(/\d+/);
-  var checkamount = amount.match(/\d+/);
+const check = (amount, amountLimit) => {
+  let amountLimitValue = amountLimit.match(/\d+/);
+  let checkamount = amount.match(/\d+/);
 
   if (
     amount == "" ||
@@ -9,6 +9,7 @@ var check = (amount, amountLimit) => {
   ) {
     return false;
   } else {
+    let repayamount = parseInt(amount) + (parseInt(amount) * 5) / 100;
     $("#amtRequested").html("");
     $("#amtRequested").html("Amount Requested: <b>" + amount + "</b>");
 

@@ -31,8 +31,18 @@ const profile = (web3Provider) => {
       $(".borrowerName").html(name);
       $("#borrowerAge").html(parseInt(age));
       $("#borrowerAddress").html(address);
-      $("#borrowerMob").html(mobileNo);
-      $("#borrowerAadhar").html(aadharNo);
+      $("#borrowerMob").html(
+        `${mobileNo.slice(0, 4)}-${mobileNo.slice(4, 7)}-${mobileNo.slice(
+          7,
+          10
+        )}`
+      );
+      $("#borrowerAadhar").html(
+        `${aadharNo.slice(0, 4)} ${aadharNo.slice(4, 8)} ${aadharNo.slice(
+          8,
+          12
+        )}`
+      );
       $("#borrowerCollege").html(clgName);
 
       //Displaying loan related info
@@ -44,6 +54,12 @@ const profile = (web3Provider) => {
       else status = "Active and Granted";
 
       $("#borrowerLoanStatus").html(status);
+
+      if (loanStatus != 0) {
+        $("#borrowerRequested").html(parseInt(amountToPay));
+      } else {
+        $("#borrowerRequested").html(`-`);
+      }
 
       if (loanStatus != 2) {
         $("#borrowerPay").html(`-`);

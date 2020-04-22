@@ -23,8 +23,18 @@ const profile = (web3Provider) => {
         $(".lenderName").html(name);
         $("#lenderAge").html(parseInt(age));
         $("#lenderAddress").html(address);
-        $("#lenderMob").html(mobileNo);
-        $("#lenderAadhar").html(aadharNo);
+        $("#lenderMob").html(
+          `${mobileNo.slice(0, 4)}-${mobileNo.slice(4, 7)}-${mobileNo.slice(
+            7,
+            10
+          )}`
+        );
+        $("#lenderAadhar").html(
+          `${aadharNo.slice(0, 4)} ${aadharNo.slice(4, 8)} ${aadharNo.slice(
+            8,
+            12
+          )}`
+        );
 
         //Displaying loan related info
         $("#lenderLoans").html(parseInt(noOfLoans));

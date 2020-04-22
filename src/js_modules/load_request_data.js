@@ -35,12 +35,12 @@ var load_request_data = (web3Provider) => {
                 if (loanStatus == 2) status = "Granted";
 
                 let data = `
-                    <tr>
+                    <tr style="background-color:white;">
                       <td class="text-center">${sno}</td>
-                      <td class="text-center">${name}</td>
+                      <td>${name}</td>
                       <td class="text-center">${amount}</td>
                       <td class="text-center">${status}</td>
-                      <td class="text-center">5%</td>
+                      <td class="text-right">5%</td>
                       <td class="text-right">
                         <button id="${address}" value="${amount}" onclick="acceptRequest(this)" class=" acceptBtn btn btn-sm btn-danger">
                           Accept

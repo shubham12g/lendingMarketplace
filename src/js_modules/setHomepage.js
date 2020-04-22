@@ -5,43 +5,47 @@ const set_homepage = (user, account, web3Provider) => {
   }
 
   if (user === "Borrower") {
-    $.getJSON("Borrower.json", function(borrower) {
+    $.getJSON("Borrower.json", function (borrower) {
       const Borrower = TruffleContract(borrower);
       Borrower.setProvider(web3Provider);
 
       var borrower;
 
       Borrower.deployed()
-        .then(function(instance) {
+        .then(function (instance) {
           borrower = instance;
           return instance.Login_Borrower({ from: account });
         })
-        .then(function(result) {
+        .then(function (result) {
           if (result[0] == true) {
-            $("#setname").text("Hi " + result[1]);
+            let name = result[1];
+            let firstName = name.slice(0, name.search(" "));
+            $("#setname").text("Hi " + firstName);
           } else {
             alert("Please login and try again!");
             window.location.href = "index.html";
           }
           return borrower.Get_Loan_Limit({ from: account });
         })
-        .then(function(result) {
+        .then(function (result) {
           console.log("LImit:" + result);
           $("#bLimit").attr("value", "Borrowing Limit: " + result);
         });
     });
   } else {
-    $.getJSON("Lender.json", function(lender) {
+    $.getJSON("Lender.json", function (lender) {
       const Lender = TruffleContract(lender);
       Lender.setProvider(web3Provider);
 
       Lender.deployed()
-        .then(function(instance) {
+        .then(function (instance) {
           return instance.Login_Lender({ from: account });
         })
-        .then(function(result) {
+        .then(function (result) {
           if (result[0] == true) {
-            $("#setname").text("Hi " + result[1]);
+            let name = result[1];
+            let firstName = name.slice(0, name.search(" "));
+            $("#setname").text("Hi " + firstName);
           } else {
             alert("Please login and try again!");
             window.location.href = "index.html";

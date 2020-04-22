@@ -12,18 +12,19 @@ contract Lender {
     struct Borrower_Info {
         address[50] receiver;
         uint[50] amount;
-        string[50] date_of_lending;
+        string[50] dateOfLending;
     }
 
     struct Lender_Info {
 
         string name;
         uint age;
-        string residential_address;
-        string mobile_no;
-        string aadhar_no;
+        string residentialAddress;
+        string mobileNo;
+        string aadharNo;
 
-        uint number_of_loans;
+        uint numberOfLoans;
+        uint activeLoans;
     }   
 
     event LenderRegistered(string _name, uint _age, string _address, string _mobile, string _aadhar, address sender);
@@ -42,11 +43,12 @@ contract Lender {
 
         lenders[uaddress].name = _name;
         lenders[uaddress].age = _age;
-        lenders[uaddress].residential_address = _address;
-        lenders[uaddress].mobile_no = _mobile;
-        lenders[uaddress].aadhar_no = _aadhar;
+        lenders[uaddress].residentialAddress = _address;
+        lenders[uaddress].mobileNo = _mobile;
+        lenders[uaddress].aadharNo = _aadhar;
 
-        lenders[uaddress].number_of_loans = 0;
+        lenders[uaddress].numberOfLoans = 0;
+        lenders[uaddress].activeLoans = 0;
 
         emit LenderRegistered (_name, _age, _address, _mobile, _aadhar, msg.sender);
 
@@ -54,11 +56,11 @@ contract Lender {
     }
 
     //This function returns the stored information through address
-    function Get_Borrower_Info () view public returns (address[50] memory receiver, uint[50] memory amount, string[50] memory date_of_lending) {
+    function Get_Borrower_Info () view public returns (address[50] memory receiver, uint[50] memory amount, string[50] memory dateOfLending) {
         address uaddress = msg.sender;
         Borrower_Info memory borrower = borrowers[uaddress];
 
-        return (borrower.receiver, borrower.amount, borrower.date_of_lending);
+        return (borrower.receiver, borrower.amount, borrower.dateOfLending);
     }
 
     
@@ -70,13 +72,15 @@ contract Lender {
 
     function Grant_Loan(address _receiver, uint _amount, string memory _date) public {
         address uaddress = msg.sender;
-        uint number_of_loans = lenders[uaddress].number_of_loans;
+        uint numberOfLoans = lenders[uaddress].numberOfLoans;
+        uint activeLoans = lenders[uaddress].activeLoans;
         Borrower_Info memory borrower = borrowers[uaddress];
 
-        borrower.receiver[number_of_loans] = address(_receiver);
-        borrower.amount[number_of_loans] = _amount;
-        borrower.date_of_lending[number_of_loans] = _date;
+        borrower.receiver[numberOfLoans] = address(_receiver);
+        borrower.amount[numberOfLoans] = _amount;
+        borrower.dateOfLending[numberOfLoans] = _date;
 
-        lenders[uaddress].number_of_loans = number_of_loans+1;    
+        lenders[uaddress].numberOfLoans = numberOfLoans+1;  
+        lenders[uaddress].activeLoans = activeLoans+1;  
     }
 }

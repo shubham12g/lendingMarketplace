@@ -49,9 +49,9 @@
         <div class="row align-items-center">
           <div class="col-6 col-xl-2">
             <h1 class="mb-0 site-logo">
-              <a href="index.html" class="h2 mb-0"
+              <a href="borrower_homepage.html" class="h2 mb-0"
                 >LoanX<span class="text-danger" style="font-size: 1rem;"
-                  >Lender</span
+                  >Borrower</span
                 >
               </a>
             </h1>
@@ -109,7 +109,7 @@
                   </div>
                   <div class="userData ml-3">
                     <h2
-                      class="d-block borrowerName"
+                      class="d-block borrowerName profileHeading"
                       style="font-size: 1.5rem; font-weight: bold;"
                     >
                       <!--Some Name-->
@@ -162,66 +162,81 @@
                       aria-labelledby="basicInfo-tab"
                     >
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;">Full Name</label>
                         </div>
-                        <div class="borrowerName col-md-8 col-6">
+                        <div class="borrowerName col-md-8 col-6 profileInfo">
                           <!--Jamshaid Kamran-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;">Age</label>
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerAge">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerAge"
+                        >
                           <!--March 22, 1994-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Residential Address</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerAddress">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerAddress"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Mobile Number</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerMob">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerMob"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Aadhar Number</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerAadhar">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerAadhar"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;">College Name</label>
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerCollege">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerCollege"
+                        >
                           <!--Something-->
                         </div>
                       </div>
@@ -233,58 +248,88 @@
                       aria-labelledby="ConnectedServices-tab"
                     >
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Borrowing Limit</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerLimit">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerLimit"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;">Loan Status</label>
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerLoanStatus">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerLoanStatus"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
+                          <label style="font-weight: bold;"
+                            >Amount Requested</label
+                          >
+                        </div>
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerRequested"
+                        >
+                          <!--Something-->
+                        </div>
+                      </div>
+                      <hr />
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Amount To Pay</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerPay">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerPay"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Loan Grant Date</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerDate">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerDate"
+                        >
                           <!--Something-->
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-2 col-5 profileHeading">
                           <label style="font-weight: bold;"
                             >Loan Payment Deadline</label
                           >
                         </div>
-                        <div class="col-md-8 col-6" id="borrowerDeadline">
+                        <div
+                          class="col-md-8 col-6 profileInfo"
+                          id="borrowerDeadline"
+                        >
                           <!--Something-->
                         </div>
                       </div>

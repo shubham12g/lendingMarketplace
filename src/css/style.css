@@ -2525,144 +2525,6 @@ body:after {
   }
 }
 
-/* Blog */
-.sidebar-box {
-  margin-bottom: 30px;
-  padding: 25px;
-  font-size: 15px;
-  width: 100%;
-  float: left;
-  background: #fff;
-}
-.sidebar-box *:last-child {
-  margin-bottom: 0;
-}
-.sidebar-box h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.categories li,
-.sidelink li {
-  position: relative;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dotted #dee2e6;
-  list-style: none;
-}
-.categories li:last-child,
-.sidelink li:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-.categories li a,
-.sidelink li a {
-  display: block;
-}
-.categories li a span,
-.sidelink li a span {
-  position: absolute;
-  right: 0;
-  top: 0;
-  color: #ccc;
-}
-.categories li.active a,
-.sidelink li.active a {
-  color: #000;
-  font-style: italic;
-}
-
-.comment-form-wrap {
-  clear: both;
-}
-
-.comment-list {
-  padding: 0;
-  margin: 0;
-}
-.comment-list .children {
-  padding: 50px 0 0 40px;
-  margin: 0;
-  float: left;
-  width: 100%;
-}
-.comment-list li {
-  padding: 0;
-  margin: 0 0 30px 0;
-  float: left;
-  width: 100%;
-  clear: both;
-  list-style: none;
-}
-.comment-list li .vcard {
-  width: 80px;
-  float: left;
-}
-.comment-list li .vcard img {
-  width: 50px;
-  border-radius: 50%;
-}
-.comment-list li .comment-body {
-  float: right;
-  width: calc(100% - 80px);
-}
-.comment-list li .comment-body h3 {
-  font-size: 20px;
-}
-.comment-list li .comment-body .meta {
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  color: #ccc;
-}
-.comment-list li .comment-body .reply {
-  padding: 5px 10px;
-  background: #e6e6e6;
-  color: #000;
-  text-transform: uppercase;
-  font-size: 14px;
-}
-.comment-list li .comment-body .reply:hover {
-  color: #000;
-  background: #e3e3e3;
-}
-
-.search-form {
-  background: #f7f7f7;
-  padding: 10px;
-}
-.search-form .form-group {
-  position: relative;
-}
-.search-form .form-group input {
-  padding-right: 50px;
-}
-.search-form .icon {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.post-meta {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-}
-.post-meta a {
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-figure figcaption {
-  margin-top: 0.5rem;
-  font-style: italic;
-  font-size: 0.8rem;
-}
-
 /*PRELOADING------------ */
 #overlayer {
   width: 100%;
@@ -2843,4 +2705,12 @@ figure figcaption {
 
 .image-container:hover .middle {
   opacity: 1;
+}
+
+.profileInfo {
+  color: cyan;
+}
+
+.profileHeading {
+  color: red;
 }
