@@ -19,7 +19,11 @@ const set_homepage = (user, account, web3Provider) => {
         .then(function (result) {
           if (result[0] == true) {
             let name = result[1];
-            let firstName = name.slice(0, name.search(" "));
+            let firstName;
+
+            if (name.search(" ") == -1) firstName = name;
+            else firstName = name.slice(0, name.search(" "));
+
             $("#setname").text("Hi " + firstName);
           } else {
             alert("Please login and try again!");
@@ -44,7 +48,11 @@ const set_homepage = (user, account, web3Provider) => {
         .then(function (result) {
           if (result[0] == true) {
             let name = result[1];
-            let firstName = name.slice(0, name.search(" "));
+            let firstName;
+
+            if (name.search(" ") == -1) firstName = name;
+            else firstName = name.slice(0, name.search(" "));
+
             $("#setname").text("Hi " + firstName);
           } else {
             alert("Please login and try again!");

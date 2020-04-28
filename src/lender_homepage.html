@@ -88,7 +88,7 @@
                     >
                   </li>
                   <li>
-                    <a href="#register-section" class="nav-link">Activity</a>
+                    <a href="lender_activity.html" class="nav-link">Activity</a>
                   </li>
                   <li>
                     <a href="#team-section" class="nav-link">Team</a>
@@ -153,7 +153,37 @@
               Your Activity
             </h2>
           </div>
+
+          <div class="col-10" data-aos="fade-up">
+            <br />
+            <br />
+            <div class="table-responsive">
+              <table class="table borderless">
+                <thead style="background-color: red;">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Borrower Name</th>
+                    <th scope="col">Amount Granted</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="loadActivity">
+                  <!-- Data is dynamically loaded-->
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+
+        <a
+          style="margin-left: 45%;"
+          class="btn btn-white"
+          data-aos="fade-up"
+          href="lender_activity.html"
+        >
+          See More
+        </a>
       </div>
 
       <section class="site-section border-bottom" id="team-section">

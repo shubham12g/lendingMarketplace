@@ -9,12 +9,6 @@ pragma experimental ABIEncoderV2;
 
 contract Lender {
 
-    struct Borrower_Info {
-        address[50] receiver;
-        uint[50] amount;
-        string[50] dateOfLending;
-    }
-
     struct Lender_Info {
 
         string name;
@@ -25,6 +19,7 @@ contract Lender {
 
         uint numberOfLoans;
         uint activeLoans;
+        address[] receiver;
     }   
 
     event LenderRegistered(string _name, uint _age, string _address, string _mobile, string _aadhar, address sender);
@@ -32,7 +27,6 @@ contract Lender {
 
     mapping (address => Lender_Info) public lenders;
     mapping (address => bool) lender_accounts; 
-    mapping (address => Borrower_Info) borrowers;
 
     //This function is used to save the information entered by the borrower during registraton.
     function Set_Lender (string memory _name, uint _age, string memory _address, string memory _mobile, string memory _aadhar) public {
@@ -56,11 +50,10 @@ contract Lender {
     }
 
     //This function returns the stored information through address
-    function Get_Borrower_Info () view public returns (address[50] memory receiver, uint[50] memory amount, string[50] memory dateOfLending) {
+    function Get_Borrower_Address () view public returns (address[] memory receiver) {
         address uaddress = msg.sender;
-        Borrower_Info memory borrower = borrowers[uaddress];
 
-        return (borrower.receiver, borrower.amount, borrower.dateOfLending);
+        return (lenders[uaddress].receiver);
     }
 
     
@@ -70,16 +63,13 @@ contract Lender {
         return (lender_accounts[uaddress], lenders[uaddress].name);
     }
 
-    function Grant_Loan(address _receiver, uint _amount, string memory _date) public {
+    function Grant_Loan(address _receiver) public {
         address uaddress = msg.sender;
+        address raddress = address(_receiver);
         uint numberOfLoans = lenders[uaddress].numberOfLoans;
         uint activeLoans = lenders[uaddress].activeLoans;
-        Borrower_Info memory borrower = borrowers[uaddress];
 
-        borrower.receiver[numberOfLoans] = address(_receiver);
-        borrower.amount[numberOfLoans] = _amount;
-        borrower.dateOfLending[numberOfLoans] = _date;
-
+        lenders[uaddress].receiver.push(raddress);
         lenders[uaddress].numberOfLoans = numberOfLoans+1;  
         lenders[uaddress].activeLoans = activeLoans+1;  
     }

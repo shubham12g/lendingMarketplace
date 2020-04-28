@@ -92,7 +92,7 @@ contract Borrower {
     function Loan_Granted (string memory _date, address receiver) public {
         address uaddress = address(receiver);
 
-        require (borrowers[uaddress].loanStatus == 1, "Loan has already been granted");
+        require (borrowers[uaddress].loanStatus <= 1, "Loan has already been granted");
 
         borrowers[uaddress].loanStatus = 2;
         borrowers[uaddress].timeOfLoan = _date;

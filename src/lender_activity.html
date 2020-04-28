@@ -49,7 +49,7 @@
         <div class="row align-items-center">
           <div class="col-6 col-xl-2">
             <h1 class="mb-0 site-logo">
-              <a href="index.html" class="h2 mb-0"
+              <a href="lender_homepage.html" class="h2 mb-0"
                 >LoanX<span class="text-danger" style="font-size: 1rem;"
                   >Lender</span
                 >
@@ -69,18 +69,15 @@
                   <a href="lender_homepage.html" class="nav-link">Home</a>
                 </li>
                 <li>
-                  <a href="#register-section" class="nav-link active"
+                  <a href="borrower_requests.html" class="nav-link"
                     >Borrow Requests</a
                   >
                 </li>
                 <li>
-                  <a href="#register-section" class="nav-link">Activity</a>
+                  <a href="#" class="nav-link active">Activity</a>
                 </li>
                 <li>
-                  <a href="#team-section" class="nav-link">Team</a>
-                </li>
-                <li>
-                  <a href="#team-section" class="nav-link">Profile</a>
+                  <a href="lender_profile.html" class="nav-link">Profile</a>
                 </li>
               </ul>
             </nav>
@@ -113,13 +110,12 @@
                 <tr>
                   <th scope="col"></th>
                   <th scope="col">Borrower Name</th>
-                  <th scope="col">Amount Requested</th>
-                  <th scope="col" class="text-center">Status</th>
-                  <th scope="col" class="text-right">Rate</th>
-                  <th></th>
+                  <th scope="col">Amount Granted</th>
+                  <th scope="col">Rate</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
-              <tbody id="requestData">
+              <tbody id="grantData">
                 <!-- Data is dynamically loaded-->
               </tbody>
             </table>
@@ -182,126 +178,5 @@
 
     <script type="text/JavaScript" src="js/truffle-contract.js"></script>
     <script type="module" src="app.js"></script>
-
-    <script type="text/JavaScript">
-      function acceptRequest(btn) {
-          const receiverAddress = btn.id;
-          const amount = btn.value;
-          const senderAddress = web3.eth.accounts;
-          const web3Provider = init();
-          const _amount = amount/16000;
-
-          console.log(receiverAddress);
-          console.log(senderAddress[0]);
-          console.log(amount);
-
-          var exec = web3.eth.sendTransaction({to:receiverAddress, from:senderAddress[0], value:web3.toWei(_amount, "ether")}, function (err, res) {
-            if(err) {
-              console.log(err);
-            }
-            else {
-              let date = new Date(Date.now());
-              date = date.toString();
-              setStatusLender(receiverAddress, web3Provider);
-              setStatusBorrower(date, receiverAddress, web3Provider);
-              alert("Loan Granted!");
-              window.location.href = "borrower_requests.html";
-            }
-          });
-      }
-
-      function setStatusLender (receiver, web3Provider) {
-        const account = web3.eth.accounts;
-        $.getJSON("Lender.json", function (lender) {
-          const lenderContract = TruffleContract(lender);
-          lenderContract.setProvider(web3Provider);
-
-          lenderContract
-          .deployed()
-          .then(function (instance) {
-            return instance.Grant_Loan(receiver, {
-            from: account[0],
-          });
-          })
-          .then(function (result) {
-            console.log("Success!");
-          })
-          .catch(function (err) {
-            console.log("Failed!");
-            console.log(err);
-          });
-        });
-      }
-
-      function setStatusBorrower(date, receiver, web3Provider) {
-        $.getJSON("Borrower.json", function (borrower) {
-        const borrowerContract = TruffleContract(borrower);
-        borrowerContract.setProvider(web3Provider);
-
-        borrowerContract
-        .deployed()
-        .then(function (instance) {
-            return instance.Loan_Granted(date, receiver);
-        })
-        .then(function (result) {
-          console.log("Success");
-        })
-        .catch(function (err) {
-          console.log("Failed");
-          console.log(err);
-        });
-        });
-      }
-
-      function etherToInr () {
-        var xmlhttp = new XMLHttpRequest();
-        var url = "https://api.coinmarketcap.com/v1/ticker/ethereum/";
-
-        xmlhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-          var json = JSON.parse(this.responseText);
-          parseJson(json[0]);
-          }
-        };
-
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-
-        function parseJson(json) {
-          var time = "<b>Last Updated : " + json["time"]["updated"] + "</b>";
-          var inrValue = "$" + json["eth"]["price_inr"];
-
-          console.log(inrValue);
-          return inrValue;
-          }
-        }
-
-      function init() {
-        var web3Provider = null;
-
-        if (window.ethereum) {
-          web3Provider = window.ethereum;
-
-          //Request account access
-          try {
-            window.ethereum.enable();
-          } catch (error) {
-            console.log(error);
-          }
-        }
-       //Legacy Dapp browsers
-        else if (window.web3) {
-          web3Provider = window.web3.currentProvider;
-        }
-        //If no web3 instance is injected, use ganache
-        else {
-          web3Provider = new Web3.providers.HttpProvider("http://localhost:7545");
-        }
-
-        web3 = new Web3(web3Provider);
-
-        return web3Provider;
-      };
-    </script>
   </body>
 </html>
