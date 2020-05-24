@@ -1,6 +1,6 @@
 var load_request_data = (web3Provider) => {
-  var borrowerInstance, baddress;
-  var sno = 1;
+  let borrowerInstance;
+  let sno = 1;
   $.getJSON("Borrower.json", function (borrower) {
     // Instantiate a new truffle contract from the artifact
     const Borrower = TruffleContract(borrower);
@@ -12,11 +12,7 @@ var load_request_data = (web3Provider) => {
         return instance.borrowers_count();
       })
       .then(function (res) {
-        if (parseInt(res) == 0) {
-          alert("There are no active requests!");
-        }
-
-        for (var i = 0; i < res; ++i) {
+        for (let i = 0; i < res; ++i) {
           borrowerInstance
             .mapBorrowers(i)
             .then(function (address) {
@@ -24,15 +20,19 @@ var load_request_data = (web3Provider) => {
             })
             .then(function (borrowers) {
               const loanStatus = borrowers[6];
-              if (loanStatus) {
+              if (loanStatus >= 1) {
                 let name = borrowers[0];
                 let amount = borrowers[8];
                 let address = borrowers[10];
                 let status = "Not Granted";
+                let btnText = "Accept";
 
                 console.log(loanStatus);
 
-                if (loanStatus == 2) status = "Granted";
+                if (loanStatus == 2) {
+                  status = "Granted";
+                  btnText = "Accepted";
+                }
 
                 let data = `
                     <tr style="background-color:white;">
@@ -43,7 +43,7 @@ var load_request_data = (web3Provider) => {
                       <td class="text-right">5%</td>
                       <td class="text-right">
                         <button id="${address}" value="${amount}" onclick="acceptRequest(this)" class=" acceptBtn btn btn-sm btn-danger">
-                          Accept
+                          ${btnText}
                         </button>
                       </td>
                     </tr>

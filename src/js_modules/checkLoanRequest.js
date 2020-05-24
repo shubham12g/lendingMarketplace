@@ -10,6 +10,7 @@ const check = (amount, amountLimit) => {
     return false;
   } else {
     let repayamount = parseInt(amount) + (parseInt(amount) * 5) / 100;
+    repayamount = Math.round(repayamount);
     $("#amtRequested").html("");
     $("#amtRequested").html("Amount Requested: <b>" + amount + "</b>");
 

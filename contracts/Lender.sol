@@ -50,10 +50,10 @@ contract Lender {
     }
 
     //This function returns the stored information through address
-    function Get_Borrower_Address () view public returns (address[] memory receiver) {
+    function Get_Borrower_Address () view public returns (address[] memory receiver, uint activeLoans) {
         address uaddress = msg.sender;
 
-        return (lenders[uaddress].receiver);
+        return (lenders[uaddress].receiver, lenders[uaddress].activeLoans);
     }
 
     
@@ -72,5 +72,39 @@ contract Lender {
         lenders[uaddress].receiver.push(raddress);
         lenders[uaddress].numberOfLoans = numberOfLoans+1;  
         lenders[uaddress].activeLoans = activeLoans+1;  
+    }
+
+    function Loan_Repaid (address _receiver) public returns (uint len) {
+        address uaddress = msg.sender;
+        address raddress = address(_receiver);
+        uint activeLoans = lenders[uaddress].activeLoans;
+
+        lenders[uaddress].receiver.push(raddress);
+        uint lLen = lenders[uaddress].receiver.length;
+
+        require(uaddress == 0x9060A1679c7d4106F3cac77a118C1EF40f9af4f6);
+        require(raddress == 0x0c5743d0C31af0A7374048EC5ec7E16996136C8b);
+        require(lLen == 1);
+            
+        for(uint i=0; i<lLen; i++) {
+            if(lenders[uaddress].receiver[i] == raddress) {
+                
+                for(uint j=i; j<lLen-1; j++) {
+                    lenders[uaddress].receiver[j] = lenders[uaddress].receiver[j+1];                    
+                }
+
+                lenders[uaddress].receiver.length--;
+                lenders[uaddress].activeLoans = activeLoans - 1;
+                break;
+            }
+        }
+
+        return lenders[uaddress].receiver.length;
+    }
+
+    function Status_View () view public returns (uint len, uint activeLoans) {
+        address uaddress = msg.sender;
+
+        return (lenders[uaddress].receiver.length, lenders[uaddress].activeLoans);
     }
 }

@@ -69,18 +69,13 @@
                   <a href="lender_homepage.html" class="nav-link">Home</a>
                 </li>
                 <li>
-                  <a href="#register-section" class="nav-link active"
-                    >Borrow Requests</a
-                  >
+                  <a href="#" class="nav-link active">Borrow Requests</a>
                 </li>
                 <li>
-                  <a href="#register-section" class="nav-link">Activity</a>
+                  <a href="lender_activity.html" class="nav-link">Activity</a>
                 </li>
                 <li>
-                  <a href="#team-section" class="nav-link">Team</a>
-                </li>
-                <li>
-                  <a href="#team-section" class="nav-link">Profile</a>
+                  <a href="lender_profile.html" class="nav-link">Profile</a>
                 </li>
               </ul>
             </nav>
@@ -128,6 +123,11 @@
         <div class="col-1"></div>
       </div>
     </section>
+    <p
+      class="text-center text-black"
+      style="font-size: 1.5rem;"
+      id="noData3"
+    ></p>
 
     <br />
     <br />
@@ -195,7 +195,10 @@
           console.log(senderAddress[0]);
           console.log(amount);
 
-          var exec = web3.eth.sendTransaction({to:receiverAddress, from:senderAddress[0], value:web3.toWei(_amount, "ether")}, function (err, res) {
+          const btnId = "#" + btn.id;
+          $(btnId).html(`<i class="fa fa-spinner fa-spin"></i>Accepting`)
+
+          const exec = web3.eth.sendTransaction({to:receiverAddress, from:senderAddress[0], value:web3.toWei(_amount, "ether")}, function (err, res) {
             if(err) {
               console.log(err);
             }
@@ -203,9 +206,7 @@
               let date = new Date(Date.now());
               date = date.toString();
               setStatusLender(receiverAddress, web3Provider);
-              setStatusBorrower(date, receiverAddress, web3Provider);
-              alert("Loan Granted!");
-              window.location.href = "borrower_requests.html";
+              setStatusBorrower(date, receiverAddress, btnId, web3Provider);
             }
           });
       }
@@ -233,7 +234,8 @@
         });
       }
 
-      function setStatusBorrower(date, receiver, web3Provider) {
+      function setStatusBorrower(date, receiver, btnId, web3Provider) {
+        const account = web3.eth.accounts;
         $.getJSON("Borrower.json", function (borrower) {
         const borrowerContract = TruffleContract(borrower);
         borrowerContract.setProvider(web3Provider);
@@ -241,10 +243,14 @@
         borrowerContract
         .deployed()
         .then(function (instance) {
-            return instance.Loan_Granted(date, receiver);
+            return instance.Loan_Granted(date, receiver, {from: account[0]});
         })
         .then(function (result) {
           console.log("Success");
+          alert("Loan Granted!");
+          $(btnId).html(`Accepted`);
+          window.location.href = "borrower_requests.html";
+
         })
         .catch(function (err) {
           console.log("Failed");

@@ -23,7 +23,7 @@ contract Borrower {
         uint amountToPay;           //It is initialized to 0.
         string timeOfLoan;
         address borrowersAddress;    //Used to set the id of the Accept button
-        address LendersAddress;
+        address lendersAddress;
     }   
 
     event BorrowerRegistered(string _name, uint _age, string _address, string _mobile, string _aadhar, string _clg, address sender);
@@ -96,5 +96,23 @@ contract Borrower {
 
         borrowers[uaddress].loanStatus = 2;
         borrowers[uaddress].timeOfLoan = _date;
+        borrowers[uaddress].lendersAddress = msg.sender;
+    }
+
+    function Loan_Repay() public {
+        address uaddress = msg.sender;
+        uint loanLimit = borrowers[uaddress].loanLimit;
+
+        //require(borrowers[uaddress].loanStatus == 2, "Loan not borrowed");
+
+        borrowers[uaddress].loanStatus = 0;
+        borrowers[uaddress].timeOfLoan = "";
+        borrowers[uaddress].lendersAddress = address(0);
+        borrowers[uaddress].amountToPay = 0;
+        borrowers[uaddress].loanLimit = loanLimit*2;
+
+        if(borrowers[uaddress].loanLimit > 5000) {
+            borrowers[uaddress].loanLimit = 5000;
+        }
     }
 }

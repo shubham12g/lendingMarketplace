@@ -12,6 +12,7 @@ import fetchActiveRequest from "./js_modules/fetchActiveRequest.js";
 import loadBorrowerProfile from "./js_modules/loadBorrowerProfile.js";
 import loadLenderProfile from "./js_modules/loadLenderProfile.js";
 import loadLenderActivity from "./js_modules/loadLenderActivity.js";
+import repayLoan from "./js_modules/repayLoan.js";
 
 const web3Provider = init();
 const account = web3.eth.accounts;
@@ -129,4 +130,9 @@ $("#activeRqst").on("click", function () {
     $("#activeRequestBox").modal("toggle");
     $("#activeRqst").html(`Active Request`);
   }, 2000);
+});
+
+$("#repayLoan").on("click", function () {
+  $("#repayLoan").html(`<i class="fa fa-spinner fa-spin"></i>Returning`);
+  repayLoan(web3Provider);
 });
