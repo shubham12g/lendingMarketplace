@@ -1,7 +1,7 @@
 /*
     Handcrafted by: Shubham Gupta
 
-    About: This contract registers the borrower and shows the registered information on user's profile page.
+    About: This contract handles the activities of the borrower.
 */
 
 pragma solidity >=0.4.17 <0.7.0;

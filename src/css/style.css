@@ -181,12 +181,12 @@ body:after {
 }
 
 .site-footer {
-  padding: 4em 0;
+  padding: 0;
   background: #333333;
 }
 @media (min-width: 768px) {
   .site-footer {
-    padding: 8em 0;
+    padding: 2em 0;
   }
 }
 .site-footer .border-top {
